@@ -62,4 +62,12 @@ public class UserController {
     public String defaultPage(){
         return "redirect:/users";
     }
+
+
+    @GetMapping(path = "/detail")
+    public String userDetails(Model model,Long id){
+        User user =userService.getOneUser(id);
+        model.addAttribute("","");
+        return "";
+    }
 }
