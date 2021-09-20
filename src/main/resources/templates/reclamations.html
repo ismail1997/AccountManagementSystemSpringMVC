@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Reclamations</title>
+
+</head>
+<body>
+<div layout:fragment="content" class="mt-3">
+    <div class="container-fluid">
+        <div class="card  ">
+            <div class="card-header bg-dark text-white ">List Of Reclamations</div>
+            <div class="card-body">
+                <table class="table">
+                   <thead class="bg-info  text-light">
+                       <tr>
+                           <th>ID</th><th>Reclamation Message</th><th>Owner</th><th>Status</th>
+                           <th>Reclamation Date</th><th>Response </th>
+                           <th>Detail</th><th>Edit</th><th>Remove</th>
+                       </tr>
+                   </thead>
+                    <tbody>
+                        <tr th:each="r:${reclamations}">
+                            <td th:text="${r.id}"></td>
+                            <td th:text="${r.reclamationMessage}"></td>
+                            <td th:text="${r.user.firstName + ' '+  r.user.lastName}"></td>
+                            <td th:text="${r.answered == true ? 'Answerd' :'Not Answered'}"></td>
+                            <td th:text="${r.reclamationDate}"></td>
+                            <td th:text="${r.answer}"></td>
+                            <td><a class="btn btn-info" th:href="@{/users/(id=${r.id})/details}"><i class="bi bi-person-lines-fill"></i></a></td>
+                            <td><a class="btn btn-warning" th:href="@{/admin/edit(id=${r.id})}"><i class="bi bi-pen"></i></a></td>
+                            <td><a class="btn btn-danger" th:href="@{/delete(id=${r.id})}"><i class="bi bi-trash-fill"></i></a> </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

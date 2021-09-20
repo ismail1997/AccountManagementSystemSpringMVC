@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Accounts</title>
+
+</head>
+<body>
+<div layout:fragment="content" class="mt-3">
+    <div class="container-fluid">
+        <div class="card  ">
+            <div class="card-header bg-dark text-white ">List of accounts</div>
+            <div class="card-body">
+                <table class="table">
+                   <thead class="bg-info  text-light">
+                       <tr>
+                           <th>ID</th><th>Account Code</th><th>Owner</th><th>Sold</th>
+                           <th>Account Type</th><th>Creation Date</th><th>Status</th>
+                           <th>Details</th><th>Remove</th>
+                       </tr>
+                   </thead>
+                    <tbody>
+                        <tr th:each="a:${accounts}">
+                            <td th:text="${a.id}"></td>
+                            <td th:text="${a.accountCode}"></td>
+                            <td th:text="${a.user.firstName + ' '+  a.user.lastName}"></td>
+                            <td th:text="${a.sold + 'Dhs'}"></td>
+                            <td th:text="${a.accountType}"></td>
+                            <td th:text="${a.creationDate}"></td>
+                            <td th:text="${a.active == true ? 'active' : 'not activated'}"></td>
+                            <td><a class="btn btn-info" th:href="@{/users/(id=${a.id})/details}"><i class="bi bi-person-lines-fill"></i></a></td>
+                            <td><a class="btn btn-danger" th:href="@{/delete(id=${a.id})}"><i class="bi bi-trash-fill"></i></a> </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
