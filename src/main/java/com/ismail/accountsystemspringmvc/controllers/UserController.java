@@ -64,10 +64,11 @@ public class UserController {
     }
 
 
-    @GetMapping(path = "/detail")
+    @GetMapping(path = "/profile")
     public String userDetails(Model model,Long id){
+        if(id==null) return "redirect:/";
         User user =userService.getOneUser(id);
-        model.addAttribute("","");
-        return "";
+        model.addAttribute("user",user);
+        return "profile";
     }
 }
