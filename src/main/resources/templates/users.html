@@ -52,7 +52,7 @@
                 </table>
                 <ul class="pagination">
 
-                    <li class="page-item active" th:class="${currentPage==status.index} ? 'active' : ''" th:each="page,status:${pages}">
+                    <li  th:class="${currentPage==status.index} ? 'page-item active' : 'page-item'"   th:each="page,status:${pages}">
                         <a class="page-link " th:href="@{/users(page=${status.index},keyword=${keyword})}" th:text="${status.index}"></a>
                     </li>
                 </ul>
