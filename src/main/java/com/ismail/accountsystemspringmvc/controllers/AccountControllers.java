@@ -20,4 +20,11 @@ public class AccountControllers {
         model.addAttribute("accounts",accounts);
         return "accounts";
     }
+
+    @GetMapping(path = "/accountDetail")
+    public String getOneAccount(Long id,Model model){
+        Account account = accountService.getOneAccount(id);
+        model.addAttribute("account",account);
+        return "account";
+    }
 }

@@ -30,7 +30,7 @@
                             <td th:text="${a.accountType}"></td>
                             <td th:text="${a.creationDate}"></td>
                             <td th:text="${a.active == true ? 'active' : 'not activated'}"></td>
-                            <td><a class="btn btn-info" th:href="@{/users/(id=${a.id})/details}"><i class="bi bi-person-lines-fill"></i></a></td>
+                            <td><a class="btn btn-info" th:href="@{/accountDetail/(id=${a.id})}"><i class="bi bi-person-lines-fill"></i></a></td>
                             <td><a class="btn btn-danger" th:href="@{/delete(id=${a.id})}"><i class="bi bi-trash-fill"></i></a> </td>
                         </tr>
                     </tbody>
