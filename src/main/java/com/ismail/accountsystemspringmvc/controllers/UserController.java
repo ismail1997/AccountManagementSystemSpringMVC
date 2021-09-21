@@ -8,11 +8,13 @@ import com.ismail.accountsystemspringmvc.services.IUserService;
 import com.ismail.accountsystemspringmvc.utils.HashPassword;
 import com.ismail.accountsystemspringmvc.utils.Parameters;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.time.LocalDate;
@@ -26,9 +28,14 @@ public class UserController {
     private IAccountService accountService;
 
     @GetMapping(path = "/users")
-    public String getUsers(Model model){
-        List<User> users = userService.getUsers();
+    public String getUsers(Model model, @RequestParam(name="page",defaultValue = "0") int page,
+                           @RequestParam(name="keyword",defaultValue = "") String keyword){
+        Page<User> pageOfUsers =userService.getUsersWhereEmailContains(keyword,page,4);
+        List<User> users = pageOfUsers.getContent();
         model.addAttribute("users",users);
+        model.addAttribute("pages",new int[pageOfUsers.getTotalPages()]);
+        model.addAttribute("currentPage",page);
+        model.addAttribute("keyword",keyword);
         return "users";
     }
     @GetMapping(path = "/newUser")
