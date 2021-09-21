@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="layout"
+>
+<head>
+    <meta charset="UTF-8">
+    <title>Accounts</title>
+
+</head>
+<body>
+<div layout:fragment="content" class="mt-3">
+    <div class="container">
+        <div class="card  ">
+            <div class="card-header bg-info text-white ">Edit User <span th:text="${user.id}"></span></div>
+            <div class="card-body">
+                <form class="needs-validation" method="post" th:action="@{/update}" >
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <input type="hidden" class="form-control" id="id" th:value="${user.id}" name="id" required>
+                            <input type="hidden" class="form-control" id="userCode" th:value="${user.userCode}" name="userCode" required>
+                            <input type="hidden" class="form-control" id="active" th:value="${user.active}" name="active" required>
+                            <input type="hidden" class="form-control" id="userType" th:value="${user.userType}" name="userType" required>
+                            <label for="firstName">First name</label>
+                            <input type="text" class="form-control" id="firstName" th:value="${user.firstName}" name="firstName" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="lastName">Last name</label>
+                            <input type="text" class="form-control" id="lastName" th:value="${user.lastName}" name="lastName" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" th:value="${user.email}" name="email" required>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="phoneNumber">Phone Number</label>
+                            <input type="text" class="form-control" id="phoneNumber" th:value="${user.phoneNumber}" name="phoneNumber" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" th:value="${user.password}" name="password" required>
+                            <input type="checkbox" onclick="myFunction()" th:onclick="|myFunction()|">Show Password
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="birthDate">Birth Date</label>
+                            <input type="date" class="form-control" id="birthDate" name="birthDate" th:value="${user.birthDate}" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-6 mb-3">
+                                <label for="address">Address </label>
+                                <textarea class="form-control" id="address"  rows="3" th:field="${user.address}" name="address"></textarea>
+                        </div>
+                    </div>
+                    <button class="btn btn-info" type="submit">Update User</button>
+                </form>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

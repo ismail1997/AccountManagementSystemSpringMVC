@@ -45,7 +45,6 @@ public class UserController {
         user.setUserCode(Parameters.generateUserCode(user.getFirstName()));
         user.setActive(true);
         user.setUserType("USER");
-        user.setPassword(HashPassword.cryptAndDecryptPassword(user.getPassword()));
         userService.addUser(user);
         Account account = new Account();
         account.setSold(Parameters.generateRandomInteger(0,200));
@@ -70,5 +69,24 @@ public class UserController {
         User user =userService.getOneUser(id);
         model.addAttribute("user",user);
         return "profile";
+    }
+
+    @GetMapping(path = "/edit")
+    public String edit(Model model,Long id ){
+        if(id==null) return "/users";
+        User user = userService.getOneUser(id);
+        model.addAttribute("user",user);
+        return "edituserform";
+    }
+
+    @PostMapping("/update")
+    public String update(Model model, @Valid User user, BindingResult bindingResult){
+        if(bindingResult.hasErrors()){
+            return "edituserform";
+        }
+
+        userService.addUser(user);
+
+        return "redirect:/users";
     }
 }

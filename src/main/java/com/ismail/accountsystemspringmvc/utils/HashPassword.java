@@ -34,6 +34,7 @@ public class HashPassword {
     }
     public static String cryptAndDecryptPassword(String string)
     {
+        if(string==null) return "";
         String str = string.toString();
         String result = "";
 

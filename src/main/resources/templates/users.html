@@ -34,7 +34,7 @@
                             <td th:text="${u.address}"></td>
                             <td th:text="${u.userType}"></td>
                             <td><a class="btn btn-info" th:href="@{/profile/(id=${u.id})}"><i class="bi bi-person-lines-fill"></i></a></td>
-                            <td><a class="btn btn-warning" th:href="@{/admin/edit(id=${u.id})}"><i class="bi bi-pen"></i></a></td>
+                            <td><a class="btn btn-warning" th:href="@{/edit(id=${u.id})}"><i class="bi bi-pen"></i></a></td>
                             <td><a class="btn btn-danger" th:href="@{/delete(id=${u.id})}"><i class="bi bi-trash-fill"></i></a> </td>
                         </tr>
                     </tbody>
