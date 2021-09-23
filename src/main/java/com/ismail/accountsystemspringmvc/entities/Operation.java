@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMin;
 import java.time.LocalDate;
 
 @Entity @Data @NoArgsConstructor @AllArgsConstructor
@@ -14,6 +15,9 @@ public class Operation {
     private String operationCode;
     private LocalDate operationDate;
     private String operationMessage;
+    @Enumerated(EnumType.ORDINAL)
+    private OperationType operationType;
+    private double operationAmount;
     @ManyToOne
     private Account account;
 }

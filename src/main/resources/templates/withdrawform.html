@@ -26,8 +26,15 @@
                                     <div th:if="${ account.active ==true && account.sold <= 100}">
                                         <p class="text-danger">Your Account Sold Is Less Than 100 DHs</p>
                                     </div>
+                                    <p th:text="${error}" class="text-danger"></p>
+
                                     <div class="px-2">
-                                        <form action="" class="justify-content-center">
+                                        <form th:action="@{/withdraw}" method="post" class="justify-content-center">
+                                            <div class="form-group">
+                                                <label class="sr-only">Account Code</label>
+                                                <input type="hidden" name="id" class="form-control"  th:value="${account.id}" >
+                                            </div>
+
                                             <div class="form-group">
                                                 <label class="sr-only">Account Code</label>
                                                 <input type="text" class="form-control" placeholder="ASER4521" th:value="${account.accountCode}" disabled>
@@ -38,7 +45,7 @@
                                             </div>
                                             <div class="form-group">
                                                 <label class="sr-only">Amount</label>
-                                                <input type="text" class="form-control" placeholder="0.0 DHs" th:disabled="${account.active ==false}">
+                                                <input type="text" class="form-control" name="amount" placeholder="0.0 DHs" th:disabled="${account.active ==false}">
                                             </div>
                                             <button type="submit" class="btn btn-info" th:disabled="${account.active ==false || account.sold<100}">Withdraw</button>
                                         </form>
