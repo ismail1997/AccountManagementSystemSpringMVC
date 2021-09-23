@@ -15,4 +15,5 @@ import java.util.List;
 
 public interface AccountRepository extends JpaRepository<Account,Long> {
     public Page<Account> findByUser(User user, Pageable pageable);
+    public Account findAccountByAccountCode(String accountCode);
 }

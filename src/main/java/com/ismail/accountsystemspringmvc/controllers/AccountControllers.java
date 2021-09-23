@@ -41,11 +41,11 @@ public class AccountControllers {
         return "redirect:/accounts";
     }
 
-    @GetMapping(path = "/withdraw")
+    @GetMapping(path = "/withdrawForm")
     public String withdrawMoney(Long id,Model model){
         Account account=accountService.getOneAccount(id);
         model.addAttribute("account",account);
-        return "withdraw";
+        return "withdrawform";
     }
 
 //    @GetMapping(path = "/abc")

@@ -9,6 +9,7 @@ import lombok.ToString;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.Collection;
 
 @Data @Entity @NoArgsConstructor
 @AllArgsConstructor @ToString
@@ -22,6 +23,8 @@ public class Account implements Serializable {
     private double sold;
     private String accountType;
     private boolean active;
+    @OneToMany(mappedBy = "account")
+    private Collection<Operation> operations;
 
 
 }
