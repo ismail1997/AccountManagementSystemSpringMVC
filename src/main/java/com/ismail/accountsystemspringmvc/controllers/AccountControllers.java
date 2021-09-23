@@ -41,6 +41,13 @@ public class AccountControllers {
         return "redirect:/accounts";
     }
 
+    @GetMapping(path = "/withdraw")
+    public String withdrawMoney(Long id,Model model){
+        Account account=accountService.getOneAccount(id);
+        model.addAttribute("account",account);
+        return "withdraw";
+    }
+
 //    @GetMapping(path = "/abc")
 //    public String getAccounts2(Model model,@RequestParam(name = "email",defaultValue = "") String email,
 //                              @RequestParam(name="page",defaultValue = "0") int page){

@@ -4,91 +4,44 @@
 >
 <head>
     <meta charset="UTF-8">
-    <title>ccount Details</title>
+    <title>Withdraw Money</title>
 
 </head>
 <body>
 <div layout:fragment="content" class="mt-3">
     <div class="container-fluid">
         <div class="card  ">
-            <div class="card-header bg-info text-white ">Account Details</div>
+            <div class="card-header bg-info text-dark ">Withdraw Money From Account</div>
             <div class="card-body">
-                <div class="row gutters-sm">
-                    <div class="col-md-4 mb-3">
-                        <div class="card">
-                            <div class="card-body">
-                                <div class="d-flex flex-column align-items-center text-center">
-                                    <img src="../static/images/avatar.png"  th:src="@{/images/avatar.png}" alt="Admin" class="rounded-circle" width="150">
-                                    <div class="mt-3">
-                                        <h4 th:text="${account.user.firstName +' '+account.user.lastName}"></h4>
-                                        <p class="text-secondary mb-1">Full Stack Developer</p>
-                                        <p class="text-muted font-size-sm">Bay Area, San Francisco, CA</p>
-                                        <button class="btn btn-primary">Follow</button>
-                                        <button class="btn btn-outline-primary">Message</button>
+                <section id="cover" class="min-vh-100">
+                    <div id="cover-caption">
+                        <div class="container">
+                            <div class="row text-dark">
+                                <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4">
+                                    <h1 class="display-4 py-2 text-truncate text-dark">Withdrawing</h1>
+                                    <br>
+                                    <div class="px-2">
+                                        <form action="" class="justify-content-center">
+                                            <div class="form-group">
+                                                <label class="sr-only">Account Code</label>
+                                                <input type="text" class="form-control" placeholder="ASER4521" th:value="${account.accountCode}" disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="sr-only">Account Sold</label>
+                                                <input type="text" class="form-control" placeholder="45200.0 DHs" th:value="${account.sold +' DHs'}" disabled>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="sr-only">Amount</label>
+                                                <input type="text" class="form-control" placeholder="0.0 DHs">
+                                            </div>
+                                            <button type="submit" class="btn btn-info btn-lg">Withdraw</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-8">
-                        <div class="card mb-3">
-                            <div class="card-body">
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Account Code</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <p th:text="${account.accountCode}"></p>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Account Sold</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <p th:text="${account.sold+' Dhs'}"></p>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Creation Date</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <p th:text="${account.creationDate}"></p>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Account Type</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <p th:text="${account.accountType}"></p>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <h6 class="mb-0">Status</h6>
-                                    </div>
-                                    <div class="col-sm-9 text-secondary">
-                                        <p th:text="${account.active == true ? 'active account ' : 'not activated'}"></p>
-                                    </div>
-                                </div>
-                                <hr>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <a class="btn btn-info "  th:href="@{/account/withdraw(id=${account.id})}">Withdraw Money</a>
-                                    </div>
-                                    <div class="col-sm-6">
-                                        <a class="btn btn-info "  th:href="@{/account/deposit(id=${account.id})}">Deposit Money</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                </section>
             </div>
         </div>
 
