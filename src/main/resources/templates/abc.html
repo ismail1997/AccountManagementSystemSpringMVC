@@ -13,23 +13,10 @@
         <div class="card  ">
             <div class="card-header bg-dark text-white ">List of accounts</div>
             <div class="card-body">
-                <form th:action="@{/accounts}" method="get">
-                    <div class="form-row">
-                        <div class="col-md-4">
-                            <div class="md-form form-group">
-                                <input name="email"  th:value="${email}" type="email" class="form-control" id="inputEmail4MD" placeholder="Email">
-                            </div>
-                        </div>
-                        <div class="col-md-8">
-                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                        </div>
-                    </div>
-                </form>
-                <br>
                 <table class="table">
                    <thead class="bg-info  text-light">
                        <tr>
-                           <th>ID</th><th>Account Code</th><th>Owner Name</th><th>Owner Email</th><th>Sold</th>
+                           <th>ID</th><th>Account Code</th><th>Owner</th><th>Sold</th>
                            <th>Account Type</th><th>Creation Date</th><th>Status</th>
                            <th>Details</th><th>Remove</th>
                        </tr>
@@ -39,7 +26,6 @@
                             <td th:text="${a.id}"></td>
                             <td th:text="${a.accountCode}"></td>
                             <td th:text="${a.user.firstName + ' '+  a.user.lastName}"></td>
-                            <td th:text="${a.user.email }"></td>
                             <td th:text="${a.sold + 'Dhs'}"></td>
                             <td th:text="${a.accountType}"></td>
                             <td th:text="${a.creationDate}"></td>
@@ -49,12 +35,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <ul class="pagination">
 
-                    <li  th:class="${currentPage==status.index} ? 'page-item active' : 'page-item'"   th:each="page,status:${pages}">
-                        <a class="page-link " th:href="@{/users(page=${status.index},keyword=${keyword})}" th:text="${status.index}"></a>
-                    </li>
-                </ul>
             </div>
         </div>
 
