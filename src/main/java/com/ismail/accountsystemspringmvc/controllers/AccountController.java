@@ -4,6 +4,7 @@ import com.ismail.accountsystemspringmvc.entities.Account;
 import com.ismail.accountsystemspringmvc.entities.models.DepositingModel;
 import com.ismail.accountsystemspringmvc.entities.models.WithdrawingModel;
 import com.ismail.accountsystemspringmvc.services.IAccountService;
+import com.ismail.accountsystemspringmvc.services.IDepositingService;
 import com.ismail.accountsystemspringmvc.services.IWithdrawingService;
 import com.ismail.accountsystemspringmvc.utils.EncryptionTool;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,12 +23,15 @@ import java.util.List;
 import java.util.Map;
 
 @Controller
-public class AccountControllers {
+public class AccountController {
     @Autowired
     private IAccountService accountService;
 
     @Autowired
     private IWithdrawingService withdrawingService;
+
+    @Autowired
+    private IDepositingService depositingService;
 
 //    @GetMapping(path = "/accounts")
 //    public String getAccounts(Model model,@RequestParam(name = "email",defaultValue = "") String email,
@@ -150,13 +154,13 @@ public class AccountControllers {
             err="You can not deposit less than 100";
             redirectAttributes.addFlashAttribute("error",err);
             return "redirect:/depositForm?id="+EncryptionTool.encrypt(depositingModel.getId()+"");
-        }else if(amount> 150000){
+        }else if(amount> 50000){
             err="Your can not deposit greater than 50000, please visit any agency to handle your request";
             redirectAttributes.addFlashAttribute("error",err);
             return "redirect:/depositForm?id="+EncryptionTool.encrypt(depositingModel.getId()+"");
         }
 
-        withdrawingService.withdrawOperation(account.getId(),depositingModel.getAmount());
+        depositingService.depositOperation(account.getId(),depositingModel.getAmount());
 
         return "redirect:/accounts";
     }

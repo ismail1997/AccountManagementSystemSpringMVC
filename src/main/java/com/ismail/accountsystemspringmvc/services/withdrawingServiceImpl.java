@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 @Service
 @Transactional
@@ -31,8 +32,8 @@ public class withdrawingServiceImpl implements IWithdrawingService {
         Operation operation = new Operation();
         operation.setOperationType(OperationType.WITHDRAWING_OPERATION);
         operation.setOperationCode(Parameters.generateOperationCode());
-        operation.setOperationMessage("Withdrawing the amount of "+amount+" from account with code ="+account.getAccountCode());
-        operation.setOperationDate(LocalDate.now());
+        operation.setOperationMessage("Withdrawing the amount of "+amount+" DHs");
+        operation.setOperationDate(new Date());
         operation.setAccount(account);
         operation.setOperationAmount(amount);
         operationRepository.save(operation);

@@ -11,7 +11,7 @@
 <div layout:fragment="content" class="mt-3">
     <div class="container-fluid">
         <div class="card  ">
-            <div class="card-header bg-info text-dark ">Deposit Money To Account</div>
+            <div class="card-header bg-info text-white ">Deposit Money To Account</div>
             <div class="card-body">
                 <section id="cover" class="min-vh-100">
                     <div id="cover-caption">
@@ -46,7 +46,10 @@
                                                 <label class="sr-only">Amount</label>
                                                 <input type="text" class="form-control" name="amount" placeholder="0.0 DHs" th:disabled="${account.active ==false}">
                                             </div>
-                                            <button type="submit" class="btn btn-info" th:disabled="${account.active ==false || account.sold<100}">Withdraw</button>
+                                            <div th:if="${account.active==true}">
+                                                <button type="submit" class="btn btn-info" >Deposit</button>
+                                            </div>
+
                                         </form>
                                     </div>
                                 </div>
