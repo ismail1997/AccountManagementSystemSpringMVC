@@ -27,32 +27,32 @@
                 </form>
                 <br>
                 <table class="table">
-                   <thead class="bg-info  text-light">
-                       <tr>
-                           <th>ID</th><th>Account Code</th><th>Owner Name</th><th>Owner Email</th><th>Sold</th>
-                           <th>Account Type</th><th>Creation Date</th><th>Status</th>
-                           <th>Details</th><th>Remove</th>
-                       </tr>
-                   </thead>
+                    <thead class="bg-info  text-light">
+                    <tr>
+                        <th>ID</th><th>Account Code</th><th>Owner Name</th><th>Owner Email</th><th>Sold</th>
+                        <th>Account Type</th><th>Creation Date</th><th>Status</th>
+                        <th>Details</th><th>Remove</th>
+                    </tr>
+                    </thead>
                     <tbody>
-                        <tr th:each="a:${accounts}">
-                            <td th:text="${a.id}"></td>
-                            <td th:text="${a.accountCode}"></td>
-                            <td th:text="${a.user.firstName + ' '+  a.user.lastName}"></td>
-                            <td th:text="${a.user.email }"></td>
-                            <td th:text="${a.sold + 'Dhs'}"></td>
-                            <td th:text="${a.accountType}"></td>
-                            <td th:text="${a.creationDate}"></td>
-                            <td th:text="${a.active == true ? 'active' : 'not activated'}"></td>
-                            <td><a class="btn btn-info" th:href="@{/accountDetail/(id=${a.id})}"><i class="bi bi-person-lines-fill"></i></a></td>
-                            <td><a class="btn btn-danger" onclick="return confirm('Are you sure you wanna delete this user !!')" th:href="@{/deleteAccount(id=${a.id})}"><i class="bi bi-trash-fill"></i></a> </td>
-                        </tr>
+                    <tr th:each="entry:${map}">
+                        <td th:text="${entry.value.id}"></td>
+                        <td th:text="${entry.value.accountCode}"></td>
+                        <td th:text="${entry.value.user.firstName + ' '+  entry.value.user.lastName}"></td>
+                        <td th:text="${entry.value.user.email }"></td>
+                        <td th:text="${entry.value.sold + 'Dhs'}"></td>
+                        <td th:text="${entry.value.accountType}"></td>
+                        <td th:text="${entry.value.creationDate}"></td>
+                        <td th:text="${entry.value.active == true ? 'active' : 'not activated'}"></td>
+                        <td><a class="btn btn-info" th:href="@{/accountDetail/(id=${entry.key})}"><i class="bi bi-person-lines-fill"></i></a></td>
+                        <td><a class="btn btn-danger" onclick="return confirm('Are you sure you wanna delete this user !!')" th:href="@{/deleteAccount(id=${entry.key})}"><i class="bi bi-trash-fill"></i></a> </td>
+                    </tr>
                     </tbody>
                 </table>
                 <ul class="pagination">
 
                     <li  th:class="${currentPage==status.index} ? 'page-item active' : 'page-item'"   th:each="page,status:${pages}">
-                        <a class="page-link " th:href="@{/users(page=${status.index},keyword=${keyword})}" th:text="${status.index}"></a>
+                        <a class="page-link " th:href="@{/accounts(page=${status.index},email=${email})}" th:text="${status.index}"></a>
                     </li>
                 </ul>
             </div>

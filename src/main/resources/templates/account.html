@@ -80,10 +80,10 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-6">
-                                        <a class="btn btn-info "  th:href="@{/withdrawForm(id=${account.id})}">Withdraw Money</a>
+                                        <a class="btn btn-info "  th:href="@{/withdrawForm(id=${encryptedID})}">Withdraw Money</a>
                                     </div>
                                     <div class="col-sm-6">
-                                        <a class="btn btn-info "  th:href="@{/account/deposit(id=${account.id})}">Deposit Money</a>
+                                        <a class="btn btn-info "  th:href="@{/account/deposit(id=${encryptedID})}">Deposit Money</a>
                                     </div>
                                 </div>
                             </div>

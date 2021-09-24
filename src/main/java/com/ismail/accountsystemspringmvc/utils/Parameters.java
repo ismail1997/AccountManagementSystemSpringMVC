@@ -50,7 +50,22 @@ public class Parameters {
 
         return randomString+localTime+userName.toUpperCase()+localDate;
     }
+    public static String generateOperationCode (){
+        String randomString ="";
+        Random random = new Random();
+        for(int i = 0 ; i<4;i++){
+            int r = random.nextInt(alphabets.length());
+            randomString=randomString+alphabets.charAt(r);
+        }
+        String localTime = LocalTime.now()+"";
+        localTime=localTime.replaceAll(":","");
+        localTime=localTime.replaceAll("\\.","");
 
+        String localDate = LocalDate.now()+"";
+        localDate=localDate.replaceAll("-","");
+
+        return randomString+localTime+localDate;
+    }
     public static Integer generateRandomInteger(int min , int max){
         Random random = new Random();
         return random.nextInt(max-min)+min;
